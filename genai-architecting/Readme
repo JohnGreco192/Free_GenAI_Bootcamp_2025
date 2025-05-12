@@ -1,0 +1,14 @@
+##Functional Requirements
+The company wants to invest in owning own infrastucutre due to concern about privacy of user data and cost of managed services for GenAI will increase over time. 
+
+Want to invest in AI PC where they can afford spend of $10,000-15,000. 
+
+There are 300 active students locate with Nagasaki
+
+##Assumptions
+Assuming open source LLM will be powerful enough to run on hardware with $10,000-15,000. 
+
+Single serve in office to the internet should have enough bandwitch to serve 300 students
+
+##Constraints
+Data privacy
