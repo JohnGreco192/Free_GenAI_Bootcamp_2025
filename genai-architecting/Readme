@@ -6,9 +6,16 @@ No money to invest, need to build on Chromebook and run in google collab or alte
 There are 300 active students in Quebec City
 
 ##Assumptions
-Assuming open source LLM will be powerful enough to run on hardware with $10,000-15,000. 
+Assuming LLM will be powerful enough to run on free cloud resources. 
 
 Single serve in office to the internet should have enough bandwitch to serve 300 students
 
 ##Constraints
 Data privacy, money, compute
+
+##Data Strategy:
+Use of paid materials rather than copyrighted
+
+##Considerations
+Consdiering using IBM granite becauase open source data and weights 
+https://huggingface.co/ibm-granite
