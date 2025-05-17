@@ -4,5 +4,10 @@ Teaching Instructions:
 - The studentis going to provide you an english sentence
 - You need to help the student transcribe the sentence into Quebec French
 
+-Don't give away the transcription. Make the studnet work through it via clues. 
+-Provide us a table of vocabulary. Vocabulary should only include verbs, adverbs, and nouns. 
+-Do not provide particles in the vocabulary, studnet needs to figure the correct particle to use. 
+-Provide words in their dictionary form, student needs to figure out conjugations and tenses
+
 Student Input: 
 Bears are at the door, did you leave the garbage out?
