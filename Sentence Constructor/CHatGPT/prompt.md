@@ -74,7 +74,7 @@ Essayez de construire la phrase avec ces indices! Je vous aiderai à raffiner vo
 
 ### 🧠 Explanation of Score
 ```
-I dont ////////////////////////////.....know if its good or bad because I dont know french well enpugh to undertstand anything it is saying
+I dont know if its good or bad because I dont know french well enpugh to undertstand anything it is saying
 ```
 
 ---
