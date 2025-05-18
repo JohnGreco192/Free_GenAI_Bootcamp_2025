@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<responses>
+  <response id="1">
+    <content>
+      **Current State: Setup**
+
+      Let's help you translate this sentence into Quebec French. I'll provide you with the vocabulary, sentence structure, and some clues to guide you.
+
+      ### Vocabulary Table:
+      | French | Quebec Pronunciation | English |
+      |--------|----------------------|---------|
+      | où | "oo" | where |
+      | meilleur | "may-yeur" | best |
+      | endroit | "on-drwa" | place |
+      | apporter | "ap-por-tay" | to bring |
+      | poussette | "poo-set" | baby stroller |
+      | jour | "joor" | day |
+      | pluvieux | "ploo-vyeu" | rainy |
+
+      ### Sentence Structure:
+      [question word] + [verb être] + [article] + [adjective] + [noun] + [preposition] + [verb infinitive] + [article] + [noun] + [preposition] + [article] + [noun] + [adjective]?
+
+      ### Clues and Considerations:
+      * Remember that in Quebec French, the question structure often follows similar patterns to English
+      * You'll need to use the present tense of "être" (to be)
+      * Think about which articles (le, la, les, un, une) to use with each noun
+      * Consider which prepositions to use (à, pour, dans, etc.)
+      * In Quebec French, adjectives typically follow the noun they describe, except for certain common adjectives
+      * Remember that "rainy day" requires you to put the adjective after the noun
+      * Try forming the sentence piece by piece using the vocabulary and structure provided
+
+      Now, try to form the sentence in Quebec French!
+    </content>
+    <score>8</score>
+    <score_reason>
+      This response scores an 8 because it provides a comprehensive vocabulary table with Quebec pronunciations, offers a clear sentence structure pattern, and gives helpful clues specific to Quebec French. It follows the requested teaching approach by not giving away the answer and encouraging the student to work through the translation. However, it could have included more Quebec-specific language features and colloquialisms.
+    </score_reason>
+  </response>
+  <response id="2">
+    <content>
+      **Current State: Setup**
+
+      I'll help you create an XML file similar to the example in your image. Let's work on translating your request into Quebec French first, and then I'll provide the XML structure you're looking for.
+
+      ### Vocabulary Table:
+      | French | Quebec Pronunciation | English |
+      |--------|----------------------|---------|
+      | créer | "kray-ay" | to create |
+      | fichier | "fee-shyay" | file |
+      | comme | "kum" | like |
+      | ceci | "se-see" | this |
+      | pour | "poor" | for |
+      | moi | "mwa" | me |
+
+      ### Sentence Structure:
+      [verb infinitive] + [pronoun] + [article] + [noun] + [adjective] + [preposition] + [demonstrative pronoun]
+
+      ### Clues and Considerations:
+      * You'll need to use the imperative form of the verb "créer" (to create)
+      * Consider which personal pronoun to use for "me" in this context
+      * Think about what the correct article would be for "fichier" (file)
+      * Remember the correct preposition to express "like this"
+      * In Quebec French, commands tend to be more direct than in English
+    </content>
+    <score>7</score>
+    <score_reason>
+      This response scores a 7 because it follows the teaching format with vocabulary, sentence structure, and clues. It adapts well to the unexpected request by still maintaining the French language teaching framework. However, it could have included more Quebec-specific expressions and provided more guidance on how imperative forms work in Quebec French specifically. The response appropriately recognized the dual nature of the request (both XML help and language learning).
+    </score_reason>
+  </response>
+</responses>
