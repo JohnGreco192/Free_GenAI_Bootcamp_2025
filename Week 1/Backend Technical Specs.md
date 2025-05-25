@@ -48,6 +48,10 @@ We have the following Tables:
     - created_at datetime
 
     ### API Endpoints
+     - GET /dashboard/last_study_session
+     - GET /dashboard/study_progress
+     - GET /dashboard/quick-stats
+
      - GET /words
      - GET /words/:id
      - GET /groups
