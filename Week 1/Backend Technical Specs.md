@@ -64,3 +64,12 @@ We have the following Tables:
         - pagination with 100 items per page
      - GET /api/groups/:id
      - GET /api/groups/:id//words
+     - GET /api/groups/:id/study_sessions
+     -GET /api/study_sessions
+        - pagination with 100 items per page
+    - GET /api/study_sessions/:id
+    - GET /api/study_sessions/:id/words
+    - POST /api/reset_history
+    - POST /api/full_reset
+    - POST /api/study_sessions/:id/words/:word_id/review
+        - required parms: correct
