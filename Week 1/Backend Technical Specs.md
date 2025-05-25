@@ -48,12 +48,13 @@ We have the following Tables:
     - created_at datetime
 
     ### API Endpoints
-     - GET /dashboard/last_study_session
-     - GET /dashboard/study_progress
-     - GET /dashboard/quick-stats
-
-     - GET /words
-     - GET /words/:id
-     - GET /groups
-     - GET /groups/:id
-     - GET /groups/:id//words
+     - GET /api/dashboard/last_study_session
+     - GET /api/dashboard/study_progress
+     - GET /api/dashboard/quick-stats
+     - GET /api/study_activites/:id
+     - GET /api/study_activites/:id/study_sessions
+     - GET /api/words
+     - GET /api/words/:id
+     - GET /api/groups
+     - GET /api/groups/:id
+     - GET /api/groups/:id//words
