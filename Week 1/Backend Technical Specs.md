@@ -53,8 +53,14 @@ We have the following Tables:
      - GET /api/dashboard/quick-stats
      - GET /api/study_activites/:id
      - GET /api/study_activites/:id/study_sessions
+
+     - POST /api/study_activities
+            - required params: group_id, study_activity_id
+
      - GET /api/words
+        - pagination with 100 items per page
      - GET /api/words/:id
      - GET /api/groups
+        - pagination with 100 items per page
      - GET /api/groups/:id
      - GET /api/groups/:id//words
