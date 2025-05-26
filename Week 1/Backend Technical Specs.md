@@ -9,9 +9,9 @@ A language learning school wants to build porottype of learning portal which wil
 - A unified Launchpad to launch different learning apps
 
 ## TEchnical Reqs
-- The backend will e built using Go?
+- The backend will e built using flask
 - The database will be SQLlite 3
-- The API will be built using GIN
+- The API will be built using Flask
 - The API will always return JSON
 - There will be no authenication or authroization. Everything will be treated as single user
 
