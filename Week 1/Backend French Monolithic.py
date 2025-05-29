@@ -301,63 +301,64 @@ class Db:
     Initializes the database by setting up tables and populating sample data.
     This method is called from the main app.py.
     """
-    with app_instance.app_context():
-      cursor = self.cursor()
+    # FIX: Removed `with app_instance.app_context():` as the call is already in an app context.
+    # This caused a nested context issue, preventing tables from being recognized.
+    cursor = self.cursor()
 
-      # Drop all tables for a clean re-initialization
-      cursor.execute("DROP TABLE IF EXISTS word_review_items;")
-      cursor.execute("DROP TABLE IF EXISTS study_sessions;")
-      cursor.execute("DROP TABLE IF EXISTS study_activities;")
-      cursor.execute("DROP TABLE IF EXISTS words_groups;")
-      cursor.execute("DROP TABLE IF EXISTS groups;")
-      cursor.execute("DROP TABLE IF EXISTS words;")
-      self.commit()
+    # Drop all tables for a clean re-initialization
+    cursor.execute("DROP TABLE IF EXISTS word_review_items;")
+    cursor.execute("DROP TABLE IF EXISTS study_sessions;")
+    cursor.execute("DROP TABLE IF EXISTS study_activities;")
+    cursor.execute("DROP TABLE IF EXISTS words_groups;")
+    cursor.execute("DROP TABLE IF EXISTS groups;")
+    cursor.execute("DROP TABLE IF EXISTS words;")
+    self.commit()
 
-      self.setup_tables(cursor)
+    self.setup_tables(cursor)
 
-      # Import words and groups from embedded data
-      groups_map = {}
-      groups_map['Basic Greetings'] = self.import_words_data(
-          cursor=cursor,
-          group_name='Basic Greetings',
-          words_list=FRENCH_WORDS_GREETINGS
-      )
-      groups_map['Common Phrases'] = self.import_words_data(
-          cursor=cursor,
-          group_name='Common Phrases',
-          words_list=FRENCH_WORDS_COMMON_PHRASES
-      )
-      groups_map['Quebecois Slang'] = self.import_words_data(
-          cursor=cursor,
-          group_name='Quebecois Slang',
-          words_list=FRENCH_WORDS_QUEBECOIS_SLANG
-      )
-      groups_map['Quebecois Culture'] = self.import_words_data(
-          cursor=cursor,
-          group_name='Quebecois Culture',
-          words_list=FRENCH_WORDS_QUEBECOIS_CULTURE
-      )
-      groups_map['Everyday Objects'] = self.import_words_data(
-          cursor=cursor,
-          group_name='Everyday Objects',
-          words_list=FRENCH_WORDS_EVERYDAY_OBJECTS
-      )
-      groups_map['Everyday Adjectives'] = self.import_words_data(
-          cursor=cursor,
-          group_name='Everyday Adjectives',
-          words_list=FRENCH_WORDS_EVERYDAY_ADJECTIVES
-      )
+    # Import words and groups from embedded data
+    groups_map = {}
+    groups_map['Basic Greetings'] = self.import_words_data(
+        cursor=cursor,
+        group_name='Basic Greetings',
+        words_list=FRENCH_WORDS_GREETINGS
+    )
+    groups_map['Common Phrases'] = self.import_words_data(
+        cursor=cursor,
+        group_name='Common Phrases',
+        words_list=FRENCH_WORDS_COMMON_PHRASES
+    )
+    groups_map['Quebecois Slang'] = self.import_words_data(
+        cursor=cursor,
+        group_name='Quebecois Slang',
+        words_list=FRENCH_WORDS_QUEBECOIS_SLANG
+    )
+    groups_map['Quebecois Culture'] = self.import_words_data(
+        cursor=cursor,
+        group_name='Quebecois Culture',
+        words_list=FRENCH_WORDS_QUEBECOIS_CULTURE
+    )
+    groups_map['Everyday Objects'] = self.import_words_data(
+        cursor=cursor,
+        group_name='Everyday Objects',
+        words_list=FRENCH_WORDS_EVERYDAY_OBJECTS
+    )
+    groups_map['Everyday Adjectives'] = self.import_words_data(
+        cursor=cursor,
+        group_name='Everyday Adjectives',
+        words_list=FRENCH_WORDS_EVERYDAY_ADJECTIVES
+    )
 
-      self.import_study_activities_data(
-          cursor=cursor,
-          activities_list=STUDY_ACTIVITIES_DATA
-      )
-      
-      # Note: Study sessions and review items are NOT seeded here to mimic the
-      # initial state of the Japanese backend. These tables will be empty
-      # until new sessions are created via API calls.
+    self.import_study_activities_data(
+        cursor=cursor,
+        activities_list=STUDY_ACTIVITIES_DATA
+    )
+    
+    # Note: Study sessions and review items are NOT seeded here to mimic the
+    # initial state of the Japanese backend. These tables will be empty
+    # until new sessions are created via API calls.
 
-      print("Core vocabulary and study activities populated. Study history tables are initialized but empty.")
+    print("Core vocabulary and study activities populated. Study history tables are initialized but empty.")
 
 # Instantiate the Db class
 db = Db(DATABASE)
@@ -368,8 +369,13 @@ def _format_datetime(dt_str):
     """Formats a datetime string to ISO 8601 with 'Z' for UTC."""
     if not dt_str:
         return None
-    dt_obj = datetime.strptime(dt_str, '%Y-%m-%d %H:%M:%S')
+    # FIX: Added handling for microseconds if present (from test script)
+    try:
+        dt_obj = datetime.strptime(dt_str, '%Y-%m-%d %H:%M:%S.%f')
+    except ValueError:
+        dt_obj = datetime.strptime(dt_str, '%Y-%m-%d %H:%M:%S')
     return dt_obj.replace(tzinfo=timezone.utc).isoformat().replace('+00:00', 'Z')
+
 
 def _get_pagination_metadata(base_url, total_items, current_page, per_page):
     """Helper to generate pagination metadata."""
@@ -566,7 +572,7 @@ def create_app(test_config=None):
                 "launch_url": launch_url
             }), 201
         except sqlite3.Error as e:
-            db.rollback()
+            db.get().rollback() # FIX: Changed from db.rollback() to db.get().rollback()
             return jsonify({"error": f"Database error: {str(e)}"}), 500
 
     # Words Endpoints
@@ -808,7 +814,7 @@ def create_app(test_config=None):
         word_exists = cursor.execute("SELECT 1 FROM words WHERE id = ?", (word_id,)).fetchone()
         if not word_exists: return jsonify({"error": "Word not found"}), 404
         try:
-            current_time = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
+            current_time = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S.%f') # Updated to include microseconds for consistency
             cursor.execute("INSERT INTO word_review_items (word_id, study_session_id, correct, created_at) VALUES (?, ?, ?, ?)",
                            (word_id, session_id, 1 if correct else 0, current_time))
             db.commit()
@@ -821,7 +827,7 @@ def create_app(test_config=None):
                 "created_at": _format_datetime(current_time)
             }), 201
         except sqlite3.Error as e:
-            db.rollback()
+            db.get().rollback() # FIX: Changed from db.rollback() to db.get().rollback()
             return jsonify({"error": f"Database error: {str(e)}"}), 500
 
     # Reset Endpoints
@@ -834,7 +840,7 @@ def create_app(test_config=None):
             db.commit()
             return jsonify({"message": "Study history reset successfully."}), 200
         except sqlite3.Error as e:
-            db.rollback()
+            db.get().rollback() # FIX: Changed from db.rollback() to db.get().rollback()
             return jsonify({"error": f"Database error: {str(e)}"}), 500
 
     @app.route('/api/full_reset', methods=['POST'])
@@ -853,7 +859,10 @@ if __name__ == '__main__':
 
     # Initialize the database and seed data
     print("Populating sample data (core vocabulary and study activities only)...")
-    db.init_db_and_seed_data(app)
+    # FIX: Wrapped db.init_db_and_seed_data(app) in app.app_context()
+    # to ensure Flask's 'g' object is available during initialization.
+    with app.app_context():
+        db.init_db_and_seed_data(app)
     print("Sample data population complete.")
 
     # Terminate any existing ngrok tunnels
