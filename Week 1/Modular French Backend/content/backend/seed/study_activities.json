@@ -1,0 +1,27 @@
+
+[
+  {
+    "name": "Flashcards",
+    "thumbnail_url": "/thumbnails/flashcards.png",
+    "description": "Practice words with interactive flashcards.",
+    "launch_url": "/app/flashcards"
+  },
+  {
+    "name": "Quiz",
+    "thumbnail_url": "/thumbnails/quiz.png",
+    "description": "Test your knowledge with a multiple-choice quiz.",
+    "launch_url": "/app/quiz"
+  },
+  {
+    "name": "Listening Practice",
+    "thumbnail_url": "/thumbnails/listen.png",
+    "description": "Improve your listening comprehension.",
+    "launch_url": "/app/listen"
+  },
+  {
+    "name": "Pronunciation Practice",
+    "thumbnail_url": "/thumbnails/pronounce.png",
+    "description": "Practice Quebecois pronunciation drills.",
+    "launch_url": "/app/pronounce"
+  }
+]
