@@ -1,0 +1,8 @@
+
+[
+  {"french_word": "Bonjour", "quebec_pronunciation": "bon-zhoor", "english": "Hello", "parts": {"notes": "Common greeting"}},
+  {"french_word": "Bonsoir", "quebec_pronunciation": "bon-swar", "english": "Good evening", "parts": {"notes": "Evening greeting"}},
+  {"french_word": "Bonne nuit", "quebec_pronunciation": "bon-nwee", "english": "Good night", "parts": {"notes": "Before sleeping"}},
+  {"french_word": "Salut", "quebec_pronunciation": "sa-lyoo", "english": "Hi/Bye (informal)", "parts": {"notes": "Informal greeting/farewell"}},
+  {"french_word": "Au revoir", "quebec_pronunciation": "oh ruh-vwahr", "english": "Goodbye", "parts": {"notes": "Common farewell"}}
+]

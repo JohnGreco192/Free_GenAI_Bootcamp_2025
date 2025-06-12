@@ -1,0 +1,8 @@
+
+[
+  {"french_word": "Poutine", "quebec_pronunciation": "poo-teen", "english": "Poutine (dish)", "parts": {"notes": "Iconic Quebecois dish of fries, cheese curds, and gravy."}},
+  {"french_word": "Cabane à sucre", "quebec_pronunciation": "ka-ban-a-syookr", "english": "Sugar shack", "parts": {"notes": "Place where maple syrup is produced and celebrated."}},
+  {"french_word": "La p'tite bière", "quebec_pronunciation": "la-peet-byair", "english": "A little beer", "parts": {"notes": "Common informal term for a beer."}},
+  {"french_word": "Blé d'Inde", "quebec_pronunciation": "blay daind", "english": "Corn", "parts": {"notes": "Quebecois specific term, standard French uses 'maïs'."}},
+  {"french_word": "Tuque", "quebec_pronunciation": "tyook", "english": "Beanie/winter hat", "parts": {"gender": "feminine", "notes": "A common type of winter hat."}}
+]

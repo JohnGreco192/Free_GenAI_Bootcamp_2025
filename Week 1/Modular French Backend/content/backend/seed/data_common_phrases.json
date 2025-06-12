@@ -1,0 +1,16 @@
+
+[
+  {"french_word": "Merci", "quebec_pronunciation": "mer-see", "english": "Thank you", "parts": {"notes": "Common expression of gratitude"}},
+  {"french_word": "De rien", "quebec_pronunciation": "duh ree-ahn", "english": "You're welcome", "parts": {"notes": "Response to thank you"}},
+  {"french_word": "S'il vous plaît", "quebec_pronunciation": "seel voo pleh", "english": "Please (formal)", "parts": {"notes": "Polite request"}},
+  {"french_word": "S'il te plaît", "quebec_pronunciation": "seel tuh pleh", "english": "Please (informal)", "parts": {"notes": "Informal polite request"}},
+  {"french_word": "Excusez-moi", "quebec_pronunciation": "ex-koo-zay-mwa", "english": "Excuse me (formal)", "parts": {"notes": "To apologize or get attention"}},
+  {"french_word": "Pardon", "quebec_pronunciation": "par-don", "english": "Sorry/Pardon", "parts": {"notes": "General apology"}},
+  {"french_word": "Oui", "quebec_pronunciation": "wee", "english": "Yes", "parts": {"notes": "Affirmative answer"}},
+  {"french_word": "Non", "quebec_pronunciation": "noh", "english": "No", "parts": {"notes": "Negative answer"}},
+  {"french_word": "Je suis", "quebec_pronunciation": "zhuh swee", "english": "I am", "parts": {"notes": "To introduce oneself"}},
+  {"french_word": "Tu es", "quebec_pronunciation": "tyoo eh", "english": "You are (informal)", "parts": {"notes": "To address informally"}},
+  {"french_word": "Comment ça va?", "quebec_pronunciation": "koh-mahn sah vah", "english": "How are you?", "parts": {"notes": "Informal greeting"}},
+  {"french_word": "Ça va bien", "quebec_pronunciation": "sah vah byan", "english": "I'm fine", "parts": {"notes": "Response to 'how are you?'"}},
+  {"french_word": "Parlez-vous anglais?", "quebec_pronunciation": "par-lay-voo-zahn-gleh", "english": "Do you speak English?", "parts": {"notes": "Asking about language"}}
+]

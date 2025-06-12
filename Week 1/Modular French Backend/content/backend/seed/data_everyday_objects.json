@@ -1,0 +1,14 @@
+
+[
+  {"french_word": "Table", "quebec_pronunciation": "tabl", "english": "Table", "parts": {"gender": "feminine"}},
+  {"french_word": "Chaise", "quebec_pronunciation": "shez", "english": "Chair", "parts": {"gender": "feminine"}},
+  {"french_word": "Livre", "quebec_pronunciation": "leevr", "english": "Book", "parts": {"gender": "masculine"}},
+  {"french_word": "Stylo", "quebec_pronunciation": "stee-lo", "english": "Pen", "parts": {"gender": "masculine"}},
+  {"french_word": "Sac", "quebec_pronunciation": "sak", "english": "Bag", "parts": {"gender": "masculine"}},
+  {"french_word": "Clé", "quebec_pronunciation": "klay", "english": "Key", "parts": {"gender": "feminine"}},
+  {"french_word": "Téléphone", "quebec_pronunciation": "tay-lay-fon", "english": "Telephone", "parts": {"gender": "masculine"}},
+  {"french_word": "Ordinateur", "quebec_pronunciation": "or-dee-na-tur", "english": "Computer", "parts": {"gender": "masculine"}},
+  {"french_word": "Verre", "quebec_pronunciation": "ver", "english": "Glass", "parts": {"gender": "masculine"}},
+  {"french_word": "Assiette", "quebec_pronunciation": "a-syet", "english": "Plate", "parts": {"gender": "feminine"}},
+  {"french_word": "Fourchette", "quebec_pronunciation": "foor-shet", "english": "Fork", "parts": {"gender": "feminine"}}
+]

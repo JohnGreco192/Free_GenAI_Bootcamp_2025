@@ -1,0 +1,13 @@
+
+[
+  {"french_word": "Tabarnak", "quebec_pronunciation": "ta-bar-nak", "english": "Damn it (Quebecois swear word)", "parts": {"notes": "Very common Quebecois expletive. Use with caution!"}},
+  {"french_word": "C'est plate", "quebec_pronunciation": "say plat", "english": "It's boring/lame", "parts": {"notes": "Informal way to say something is dull or disappointing."}},
+  {"french_word": "Chum", "quebec_pronunciation": "chum", "english": "Boyfriend/Buddy", "parts": {"notes": "Can mean a close friend or a romantic partner."}},
+  {"french_word": "Blonde", "quebec_pronunciation": "blond", "english": "Girlfriend", "parts": {"notes": "Informal term for a female partner."}},
+  {"french_word": "Dépanneur", "quebec_pronunciation": "day-pan-ner", "english": "Convenience store", "parts": {"gender": "masculine", "notes": "Common term for a corner store in Quebec."}},
+  {"french_word": "Frette", "quebec_pronunciation": "fret", "english": "Cold", "parts": {"notes": "Informal way to say it's cold."}},
+  {"french_word": "Char", "quebec_pronunciation": "shar", "english": "Car", "parts": {"gender": "masculine", "notes": "Informal term for a car."}},
+  {"french_word": "Tiguidou", "quebec_pronunciation": "tee-gee-doo", "english": "Alright/Okay", "parts": {"notes": "Used to express agreement or that something is fine."}},
+  {"french_word": "Piasse", "quebec_pronunciation": "pyass", "english": "Buck (dollar)", "parts": {"notes": "Slang for a dollar."}},
+  {"french_word": "Bienvenue", "quebec_pronunciation": "byen-vuh-noo", "english": "You're welcome", "parts": {"notes": "Also used as a response to thank you."}}
+]
