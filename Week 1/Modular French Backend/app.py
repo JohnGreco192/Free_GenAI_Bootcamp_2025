@@ -11,7 +11,7 @@ from pyngrok import ngrok
 # --- NGROK AUTH TOKEN (HARDCODED) ---
 # This token is hardcoded for direct Colab execution as requested.
 # For production environments, consider more secure environment variable management.
-NGROK_AUTH_TOKEN_HARDCODED = "2xYJhhTv3mEbTAi3DI9XpSmCkEm_3NePEXAUfnBM6UH4ALmXe"
+NGROK_AUTH_TOKEN_HARDCODED = "..."
 
 # Import database and utility modules
 from lib.db import db
