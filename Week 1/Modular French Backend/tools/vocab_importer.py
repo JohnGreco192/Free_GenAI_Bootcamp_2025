@@ -9,7 +9,7 @@ prompt = st.text_area(
     value="Generate 10 Quebec French food words as a JSON array. Each object should have: \"french_word\", \"quebec_pronunciation\", \"english\", and \"parts\" (an object with at least a \"notes\" field)."
 )
 
-groq_api_key = "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"
+groq_api_key = "Your Groq Key here"
 groq_url = "https://api.groq.com/openai/v1/chat/completions"
 headers = {
     "Authorization": f"Bearer {groq_api_key}",
