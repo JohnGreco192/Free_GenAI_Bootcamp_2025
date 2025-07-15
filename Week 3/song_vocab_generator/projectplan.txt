@@ -1,0 +1,106 @@
+
+# Revised Project Plan: Agentic Song Vocabulary Generator
+
+This revised plan prioritizes implementing and testing the lyric search and vocabulary extraction tools before setting up the database.
+
+## 1. Setup and Initialization (Revised)
+
+- **Action:** Ensure Python environment is set up. Create project directory structure (already done).
+- **Action:** Verify access to Colab secrets for `GOOGLE_API_KEY` and `GOOGLE_CSE_ID`.
+- **Action:** Set up LLM integration (e.g., using `google.generativeai`).
+- **Test:** Run a script to verify LLM access.
+
+## 2. Implement and Test Lyric Search & Retrieval Tool
+
+- **Action:** **Install necessary libraries:** `google-api-python-client`, `requests`, and `BeautifulSoup`.
+- **Action:** Write the code for the `Lyric Search & Retrieval Tool` in `song_vocab_generator/tools/lyric_search.py`. This tool will use:
+    - `google-api-python-client` and the Custom Search JSON API to search for lyric pages using `GOOGLE_API_KEY` and `GOOGLE_CSE_ID`.
+    - `requests` to fetch the content of the top search result URL.
+    - `BeautifulSoup` to parse the HTML content and extract the main lyrics text.
+- **Test:** Write a test script or function to:
+    - Call the lyric search tool with a known song title and artist.
+    - Verify that a URL is returned from the search API call.
+    - Verify that plain text content (lyrics) is retrieved from the URL using requests and BeautifulSoup.
+    - Check if the retrieved text appears to be the correct lyrics. Handle cases where lyrics are not found or extraction fails.
+
+## 3. Implement and Test Vocabulary Extraction Tool
+
+- **Action:** Write the code for the `Vocabulary Extraction Tool` in `song_vocab_generator/tools/vocabulary_extraction.py`. This tool will use the integrated LLM to extract vocabulary from text.
+- **Test:** Write a test script or function to:
+    - Provide a sample block of text (either simulated or from a successful lyric search test).
+    - Call the vocabulary extraction tool with this text.
+    - Verify that the output is a list of dictionaries with "word" and "definition" keys, conforming to the specified JSON format.
+    - Check if the extracted vocabulary seems reasonable for the input text.
+
+## 4. Setup and Implement Database Storage
+
+- **Action:** Initialize the SQLite database and create the `vocabulary` table.
+- **Test:** Run a script to connect to the database and confirm the table exists.
+- **Action:** Write the code for the `Database Storage Tool` in `song_vocab_generator/tools/database_storage.py`. This tool should handle connecting to the SQLite DB and inserting vocabulary data.
+- **Test:** Write a test script or function to:
+    - Create a sample vocabulary list (or use output from a successful vocabulary extraction test).
+    - Call the database storage tool to insert this data.
+    - Connect to the database and query the table to verify the data was inserted correctly.
+    - Handle potential duplicates and verify the primary key constraint.
+
+## 5. Implement and Test the Song-to-Vocab Agent
+
+- **Action:** Write the code for the main `SongToVocabAgent` class in `song_vocab_generator/agent/agent.py`. This class will orchestrate the calls to the individual tools (Search -> Extract -> Store).
+- **Test:** Write a comprehensive test script to:
+    - Instantiate the `SongToVocabAgent`.
+    - Invoke the agent with a song title and artist (`process_song` method).
+    - Monitor the agent's output and logs to see if it successfully calls each tool.
+    - Check the database after the agent runs to confirm that the extracted vocabulary for the specific song has been stored.
+    - Test edge cases, such as songs not found, errors during extraction, etc.
+
+## 6. Main Application/Entry Point
+
+- **Action:** Write the main script (`song_vocab_generator/main.py`) that will serve as the entry point for invoking the agent.
+- **Action:** Add command-line argument parsing or a simple function call mechanism to pass song and artist names to the agent.
+- **Test:** Run the `main.py` script with sample inputs and verify that the agent executes and the results are stored in the database.
+
+## 7. Refinement and Error Handling
+
+- **Action:** Review all components and the agent for robust error handling.
+- **Action:** Add logging to track the agent's execution flow and any issues.
+- **Action:** Refine the lyric extraction logic if needed to handle different website structures.
+- **Test:** Introduce simulated errors (e.g., network issues, LLM errors, database errors) to ensure the agent handles them gracefully and reports appropriately.
+
+## 8. Documentation and Packaging (Optional but Recommended)
+
+- **Action:** Add docstrings to classes and functions.
+- **Action:** Create a README file explaining how to set up and run the project.
+- **Action:** Consider packaging the project (e.g., using `setup.py`).
+
+## 9. Finish task
+
+- **Action:** Summarize the completed work and ensure all project requirements are met.
+
+# Progress
+Environment is Stable: The Current Working Directory and sys.path look correct, and more importantly, the NameError: name 'requests' is not defined from before is gone. This indicates that the import requests statement in vocabulary_extraction.py is now correctly recognized and the module is loading properly.
+
+Database Tool Works: "Database 'vocabulary.db' initialized and 'vocabulary' table ensured." confirms the database setup is fine.
+
+Lyric Search & Retrieval is Resilient:
+
+It correctly attempted AZLyrics.com first.
+
+It still failed to parse AZLyrics.com with the 'NoneType' object has no attribute 'find_next_sibling' error. This means our AZLyrics-specific parsing logic isn't perfectly robust for all their page variations.
+
+CRUCIALLY, it recovered! It moved on to songlyrics.com, successfully fetched the page, and extracted the lyrics using the general div[class*="lyrics"] selector. This demonstrates the value of having multiple parsing strategies and iterating through search results.
+
+Vocabulary Extraction Works: "Vocabulary extracted successfully." and "Extracted 13 vocabulary items." (or 12 in the second run) confirms the LLM integration is working and returning structured data.
+
+Database Storage Works: "Successfully stored 13 unique vocabulary items..." confirms the storage is functioning correctly, including handling duplicates as intended.
+
+Agent Orchestration is Perfect: "--- Agent Process for 'Bohemian Rhapsody' by Queen Completed Successfully ---" and "Test passed for successful song processing and DB storage." show that the SongToVocabAgent successfully orchestrated all three tools in sequence.
+
+Failure Handling Works: The test for "NonExistentSong12345" correctly resulted in "Agent failed: Could not retrieve lyrics." and "Test passed: Agent correctly handled song not found scenario."
+
+Conclusion:
+
+We have successfully completed Section 5: Implement and Test the Song-to-Vocab Agent. The agent now correctly finds lyrics (even if it has to try multiple sites), extracts vocabulary using the LLM, and stores it in the database. The minor issue with AZLyrics parsing is a refinement, not a blocker, as the agent can successfully find lyrics from other sources.
+
+Let's move on to Section 6: Main Application/Entry Point.
+
+Next Action: Write the main script (song_vocab_generator/main.py) that will serve as the entry point for invoking the agent. This will involve adding command-line argument parsing or a simple function call mechanism to pass song and artist names to the agent.
