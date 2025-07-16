@@ -1,6 +1,6 @@
 # OPEA Megaservice with Llama-3-8B-Instruct
 
-This project sets up an OPEA Megaservice to serve the `meta-llama/Llama-3-8B-Instruct` model using Hugging Face's TGI backend. This version is configured to run on an L4 GPU.
+This project sets up an OPEA Megaservice to serve the `meta-llama/Llama-3-8B-Instruct` model using Hugging Face's TGI backend. This version is configured to run on an L4 GPU via LightningAI. Results were greatly improved from the LLama-3-1B-Instruct version I had completed in week 2. 
 
 ## Project Overview
 
@@ -14,9 +14,8 @@ The project consists of three main components:
 
 You will need three separate terminals.
 
-### Step 1: Start the TGI Server
 
-This will launch the TGI Docker container and download the Llama 3 8B model. This will take a while the first time.
+
 # https://github.com/opea-project/GenAIComps
 MegaService
 A Megaservice is a higher-level architectural construct composed of one or more Microservices, providing the capability to assemble end-to-end applications. Unlike individual Microservices, which focus on specific tasks or functions, a Megaservice orchestrates multiple Microservices to deliver a comprehensive solution.
