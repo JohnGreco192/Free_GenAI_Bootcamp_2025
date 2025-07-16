@@ -1,4 +1,5 @@
-
+import React, { useEffect, useState } from "react";
+import { getGroups } from "@/lib/api";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,74 +7,15 @@ import { BookOpen, Settings, Activity } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Groups = () => {
-  const groups = [
-    {
-      id: 1,
-      name: "Quebec Swear Words",
-      description: "Essential Quebec expressions and their cultural context",
-      wordCount: 15,
-      category: "Expressions",
-      difficulty: "Intermediate",
-      progress: 75,
-      lastStudied: "2 days ago",
-      color: "bg-red-500"
-    },
-    {
-      id: 2,
-      name: "Winter Vocabulary",
-      description: "Words related to Quebec's famous winters and snow activities",
-      wordCount: 28,
-      category: "Seasonal",
-      difficulty: "Beginner",
-      progress: 60,
-      lastStudied: "1 week ago",
-      color: "bg-blue-500"
-    },
-    {
-      id: 3,
-      name: "Quebec Food & Drinks",
-      description: "Traditional Quebec cuisine, drinks, and dining vocabulary",
-      wordCount: 32,
-      category: "Food",
-      difficulty: "Beginner",
-      progress: 90,
-      lastStudied: "Yesterday",
-      color: "bg-green-500"
-    },
-    {
-      id: 4,
-      name: "Montreal Slang",
-      description: "Street language and slang commonly used in Montreal",
-      wordCount: 22,
-      category: "Urban",
-      difficulty: "Advanced",
-      progress: 40,
-      lastStudied: "3 days ago",
-      color: "bg-purple-500"
-    },
-    {
-      id: 5,
-      name: "Quebec History Terms",
-      description: "Vocabulary related to Quebec's rich history and culture",
-      wordCount: 18,
-      category: "Cultural",
-      difficulty: "Advanced",
-      progress: 55,
-      lastStudied: "5 days ago",
-      color: "bg-orange-500"
-    },
-    {
-      id: 6,
-      name: "Daily Conversations",
-      description: "Common phrases for everyday interactions in Quebec",
-      wordCount: 35,
-      category: "Practical",
-      difficulty: "Beginner",
-      progress: 85,
-      lastStudied: "Today",
-      color: "bg-indigo-500"
-    }
-  ];
+  const [groups, setGroups] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getGroups()
+      .then(data => setGroups(data))
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -95,6 +37,8 @@ const Groups = () => {
     };
     return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
   };
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="space-y-8">

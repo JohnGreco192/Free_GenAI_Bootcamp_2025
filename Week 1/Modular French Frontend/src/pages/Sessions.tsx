@@ -1,4 +1,5 @@
-
+import React, { useEffect, useState } from "react";
+import { getSessions } from "@/lib/api";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,16 @@ import { Progress } from "@/components/ui/progress";
 import { BookOpen, Activity, Calendar, Settings } from "lucide-react";
 
 const Sessions = () => {
+  const [sessions, setSessions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getSessions()
+      .then(data => setSessions(data))
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
+
   const sessionStats = [
     { title: "Total Sessions", value: "147", description: "All time" },
     { title: "This Month", value: "28", description: "Study sessions" },
@@ -98,6 +109,8 @@ const Sessions = () => {
     };
     return colors[activity as keyof typeof colors] || "bg-gray-100 text-gray-800";
   };
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="space-y-8">
@@ -292,6 +305,18 @@ const Sessions = () => {
             </CardContent>
           </Card>
         </div>
+      </div>
+
+      {/* Fetched Sessions */}
+      <div>
+        <h2>Fetched Study Sessions</h2>
+        <ul>
+          {sessions.map((session: any) => (
+            <li key={session.id}>
+              {session.activity_name} — {session.date}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

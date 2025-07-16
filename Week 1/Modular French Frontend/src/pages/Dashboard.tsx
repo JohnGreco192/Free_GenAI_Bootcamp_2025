@@ -1,4 +1,5 @@
-
+import React, { useEffect, useState } from "react";
+import { getStudyActivities } from "@/lib/api";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -6,6 +7,16 @@ import { BookOpen, Activity, Calendar, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
+  const [activities, setActivities] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getStudyActivities()
+      .then(data => setActivities(data))
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
+
   const stats = [
     { title: "Words Learned", value: "342", description: "Total vocabulary" },
     { title: "Study Sessions", value: "28", description: "This month" },
@@ -18,6 +29,8 @@ const Dashboard = () => {
     { type: "word", title: "Added 'tabarnac' to expressions", time: "4 hours ago" },
     { type: "group", title: "Created 'Quebec Slang' group", time: "1 day ago" },
   ];
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="space-y-8">
@@ -139,6 +152,21 @@ const Dashboard = () => {
             </div>
             <Progress value={32} className="h-2" />
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Study Activities Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Study Activities</CardTitle>
+          <CardDescription>Explore and manage your study activities</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul>
+            {activities.map((activity: any) => (
+              <li key={activity.id}>{activity.name}</li>
+            ))}
+          </ul>
         </CardContent>
       </Card>
     </div>
