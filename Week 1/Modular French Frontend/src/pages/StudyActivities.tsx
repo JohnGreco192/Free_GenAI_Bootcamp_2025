@@ -1,48 +1,20 @@
-
+import React, { useEffect, useState } from "react";
+import { getStudyActivities } from "@/lib/api";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Activity, Calendar } from "lucide-react";
 
 const StudyActivities = () => {
-  const activities = [
-    {
-      title: "Vocabulary Flash Cards",
-      description: "Review your Quebec French words with interactive flashcards",
-      difficulty: "Beginner",
-      duration: "15-30 min",
-      wordsCount: 25,
-      icon: BookOpen,
-      color: "bg-blue-500"
-    },
-    {
-      title: "Quebec Expressions Quiz",
-      description: "Test your knowledge of common Quebec expressions and their meanings",
-      difficulty: "Intermediate",
-      duration: "20-40 min", 
-      wordsCount: 15,
-      icon: Activity,
-      color: "bg-green-500"
-    },
-    {
-      title: "Cultural Context Matching",
-      description: "Match Quebec words with their cultural context and usage",
-      difficulty: "Advanced",
-      duration: "25-45 min",
-      wordsCount: 20,
-      icon: Calendar,
-      color: "bg-purple-500"
-    },
-    {
-      title: "Pronunciation Practice",
-      description: "Practice the unique pronunciation of Quebec French words",
-      difficulty: "All Levels",
-      duration: "10-20 min",
-      wordsCount: 30,
-      icon: BookOpen,
-      color: "bg-orange-500"
-    }
-  ];
+  const [activities, setActivities] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getStudyActivities()
+      .then(data => setActivities(data))
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -52,6 +24,8 @@ const StudyActivities = () => {
       default: return "bg-blue-100 text-blue-800";
     }
   };
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="space-y-8">

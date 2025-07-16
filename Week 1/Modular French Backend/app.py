@@ -1,4 +1,3 @@
-
 # backend/app.py
 import sqlite3
 import json
@@ -80,31 +79,9 @@ if __name__ == '__main__':
 
     # Initialize the database and seed data
     print("Populating sample data (core vocabulary and study activities only)...")
-    # Wrap db.init_db_and_seed_data(app) in app.app_context()
-    # to ensure Flask's 'g' object is available during initialization.
     with app.app_context():
         db.init_db_and_seed_data(app)
     print("Sample data population complete.")
 
-    # Terminate any existing ngrok tunnels to prevent conflicts
-    ngrok.kill()
-
-    # Set the ngrok authentication token from the hardcoded variable
-    try:
-        ngrok.set_auth_token(NGROK_AUTH_TOKEN_HARDCODED)
-        print("ngrok authentication token set from hardcoded value.")
-    except Exception as e:
-        print(f"FATAL ERROR: Could not set ngrok authtoken with the hardcoded token: {e}")
-        print("Please ensure your hardcoded NGROK_AUTH_TOKEN is valid. Exiting.")
-        exit()
-
-    # Establish ngrok tunnel and run Flask app
-    public_url = ngrok.connect(5000)
-    print(f" * Tunnel URL: {public_url}")
-    print(" * Serving Flask app '__main__'")
-    print(" * Debug mode: off")
-    print(" * Running on http://127.0.0.1:5000")
-    print("INFO:werkzeug:Press CTRL+C to quit")
-
-    # Run the Flask application
-    app.run(debug=False, port=5000, use_reloader=False)
+    # Run the Flask application (no ngrok, listen on all interfaces for Codespaces)
+    app.run(host="0.0.0.0", port=5000, debug=False)

@@ -1,71 +1,23 @@
-
+import React, { useEffect, useState } from "react";
+import { getWords } from "@/lib/api";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Words = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [words, setWords] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const words = [
-    {
-      id: 1,
-      word: "Tabarnac",
-      translation: "Darn!/Holy!",
-      category: "Expressions",
-      difficulty: "Common",
-      pronunciation: "ta-bar-NAK",
-      usage: "Strong expression of surprise or frustration"
-    },
-    {
-      id: 2,
-      word: "Dépanneur",
-      translation: "Convenience store",
-      category: "Daily Life", 
-      difficulty: "Essential",
-      pronunciation: "day-pan-NŒUR",
-      usage: "Small local store for quick purchases"
-    },
-    {
-      id: 3,
-      word: "Chum",
-      translation: "Boyfriend/Friend",
-      category: "Relationships",
-      difficulty: "Common",
-      pronunciation: "TCHUM",
-      usage: "Informal term for boyfriend or close friend"
-    },
-    {
-      id: 4,
-      word: "Tuque",
-      translation: "Winter hat/Beanie",
-      category: "Clothing",
-      difficulty: "Essential",
-      pronunciation: "TOUK",
-      usage: "Knitted winter cap worn in cold weather"
-    },
-    {
-      id: 5,
-      word: "Pouding chômeur",
-      translation: "Unemployed pudding",
-      category: "Food",
-      difficulty: "Cultural",
-      pronunciation: "poo-DING cho-MŒUR",
-      usage: "Traditional Quebec dessert created during economic hardship"
-    },
-    {
-      id: 6,
-      word: "Char",
-      translation: "Car",
-      category: "Transportation",
-      difficulty: "Common",
-      pronunciation: "CHAR",
-      usage: "Informal Quebec term for automobile"
-    }
-  ];
+  useEffect(() => {
+    getWords()
+      .then(data => setWords(data))
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
 
   const getCategoryColor = (category: string) => {
     const colors = {
@@ -93,6 +45,8 @@ const Words = () => {
     word.translation.toLowerCase().includes(searchTerm.toLowerCase()) ||
     word.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="space-y-8">
