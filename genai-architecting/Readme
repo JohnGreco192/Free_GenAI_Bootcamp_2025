@@ -1,21 +1,23 @@
-##Functional Requirements
+## Functional Requirements
 The company wants to invest in owning own infrastucutre due to concern about privacy of user data and cost of managed services for GenAI will increase over time. 
 
-No money to invest, need to build on Chromebook and run in google collab or alternative free cloud resource. 
+No money to invest, need to build on Chromebook 3100 (Laptop value approx $40 US dollars) and run on free cloud resource. 
 
-There are 300 active students in Quebec City
+Prospective user base is 300 active students in Quebec City
 
-##Assumptions
-Assuming LLM will be powerful enough to run on free cloud resources. 
+## Assumptions
+Assuming LLM within technica limits will be powerful enough to run on free cloud resources. 
 
 Single serve in office to the internet should have enough bandwitch to serve 300 students
 
-##Constraints
+## Constraints
 Data privacy, money, compute
 
-##Data Strategy:
+## Data Strategy:
 Use of paid materials rather than copyrighted
 
-##Considerations
+## Considerations
 Consdiering using IBM granite becauase open source data and weights 
 https://huggingface.co/ibm-granite
+
+## work notes .png was primairly created on open.io using code provided by Chat GPT. With some minor formatting in editor. 

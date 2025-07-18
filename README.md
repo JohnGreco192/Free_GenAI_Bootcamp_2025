@@ -1,2 +1,2 @@
-WIP - for homeowrk submissions to Free Gen AI Bootcamp 
+Homework submissions to FreeCodeCamp Free Gen AI Bootcamp by Andrew Brown on Exam Pro
  
