@@ -1,0 +1,36 @@
+# Secrets
+.env
+*.env
+env.txt
+.env.*
+secrets.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Databases & vector stores
+*.db
+*.sqlite3
+chroma_db/
+data/chroma_db/
+
+# Archives
+*.zip
+*.tar.gz
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
